@@ -35,89 +35,84 @@ void clickCallback(void* pSensorId) {
   setOutput(sensorId);
 }
 
-void saloonClick() {
-  setOutput(SALOON_1_ID);
-  setOutput(SALOON_2_ID);
+void kuchniaClick() {
+  setOutput(KUCHNIA_OSWIETLENIE_TUBY);
+  setOutput(KUCHNIA_OSWIETLENIE_WYSPA);
 }
-void saloonOff() {
-  setOutput(SALOON_1_ID, Relay::OFF);
-  setOutput(SALOON_2_ID, Relay::OFF);
+
+void kuchniaOff() {
+  setOutput(KUCHNIA_OSWIETLENIE_WYSPA, Relay::OFF);
+  setOutput(KUCHNIA_OSWIETLENIE_TUBY, Relay::OFF);
 }
-void gamingRoomClick() {
-  setOutput(GAMING_ROOM_1_ID);
-  setOutput(GAMING_ROOM_2_ID);
+
+void jadalniaClick() {
+  setOutput(JADALNIA_OSWIETLENIE);
 }
-void gamingRoomOff() {
-  setOutput(GAMING_ROOM_1_ID, Relay::OFF);
-  setOutput(GAMING_ROOM_2_ID, Relay::OFF);
+
+void salonClick() {
+  setOutput(SALON_ZYRANDOL);
 }
-void bedroomOff() {
-  setOutput(BEDROOM_1_ID, Relay::OFF);
-  setOutput(BEDROOM_2_ID, Relay::OFF);
-  setOutput(BED_1_ID, Relay::OFF);
-  setOutput(BED_2_ID, Relay::OFF);
+
+void biuroClick() {
+  setOutput(BIURO_OSWIETLENIE_L1);
 }
-void bedroomClick() {
-  setOutput(BEDROOM_1_ID);
-  setOutput(BEDROOM_2_ID);
+
+void biuroOff() {
+  setOutput(BIURO_OSWIETLENIE_L1, Relay::OFF);
+  setOutput(BIURO_OSWIETLENIE_L2, Relay::OFF);
 }
-void bathroomClick() {
-  setOutput(BATHROOM_ID);
-  setOutput(BATHROOM_LED_ID);
+
+void przedpokojClick() {
+  setOutput(PRZEDPOKOJ_OSWIETLENIE);
 }
-void bathroomOff() {
-  setOutput(BATHROOM_ID, Relay::OFF);
-  setOutput(BATHROOM_LED_ID, Relay::OFF);
-  setOutput(MIRROR_ID, Relay::OFF);
+
+void balkonClick() {
+  setOutput(BALKON_OSWIETLENIE);
 }
-void kitchenClick() {
-  setOutput(KITCHEN_ID);
-  setOutput(KITCHEN_LED1_ID);
-  setOutput(KITCHEN_LED2_ID);
+
+void poddaszeClick() {
+  setOutput(PODDASZE_OSWIETLENIE);
 }
-void kitchenOff() {
-  setOutput(KITCHEN_ID, Relay::OFF);
-  setOutput(KITCHEN_LED1_ID, Relay::OFF);
-  setOutput(KITCHEN_LED2_ID, Relay::OFF);
-  setOutput(KITCHEN_TABLE_ID, Relay::OFF);
+
+void sypialniaClick() {
+  setOutput(SYPIALNIA_OSWIETLENIE);
+}
+
+void stasiuClick() {
+  setOutput(STASIU_OSWIETLENIE_L1);
+}
+
+void stasiuOff() {
+  setOutput(STASIU_OSWIETLENIE_L1, Relay::OFF);
+  setOutput(STASIU_OSWIETLENIE_L2, Relay::OFF);
 }
 
 void setupButtons() {
   // Setup the button.
-  saloon.attachClick(saloonClick);
-  saloon.attachLongPressStop(saloonOff);
-  saloon.attachDoubleClick(clickCallback, SALOON_2_ID);
+  kuchnia.attachClick(kuchniaClick);
+  kuchnia.attachLongPressStop(kuchniaOff);
+  kuchnia.attachDoubleClick(clickCallback, KUCHNIA_OSWIETLENIE_TUBY);
 
-  gamingRoom.attachClick(gamingRoomClick);
-  gamingRoom.attachLongPressStop(gamingRoomOff);
-  gamingRoom.attachDoubleClick(clickCallback, GAMING_ROOM_1_ID);
+  jadalnia.attachClick(jadalniaClick);
 
-  bedroom.attachClick(bedroomClick);
-  bedroom.attachLongPressStop(bedroomOff);
-  bedroom.attachDoubleClick(clickCallback, BEDROOM_2_ID);
+  salon1.attachClick(salonClick);
+  salon2.attachClick(clickCallback, JADALNIA_OSWIETLENIE);
+  salon3.attachClick(clickCallback, PRZEDPOKOJ_OSWIETLENIE);
 
-  bed1.attachClick(clickCallback, BED_1_ID);
-  bed1.attachLongPressStop(bedroomOff);
-  bed1.attachDoubleClick(clickCallback, BED_2_ID);
+  biuro.attachClick(biuroClick);
+  biuro.attachLongPressStop(biuroOff);
+  biuro.attachDoubleClick(clickCallback, BIURO_OSWIETLENIE_L2);
 
-  bed2.attachClick(clickCallback, BED_2_ID);
-  bed2.attachLongPressStop(bedroomOff);
-  bed2.attachDoubleClick(clickCallback, BED_1_ID);
+  przedpokoj1.attachClick(przedpokojClick);
+  przedpokoj2.attachClick(przedpokojClick);
 
-  guests.attachClick(clickCallback, GUESTS_ID);
+  balkon.attachClick(balkonClick);
 
-  bathroom.attachClick(bathroomClick);
-  bathroom.attachLongPressStop(bathroomOff);
+  poddasze.attachClick(poddaszeClick);
 
-  mirror.attachClick(clickCallback, MIRROR_ID);
+  sypialnia.attachClick(sypialniaClick);
 
-  kitchen.attachClick(kitchenClick);
-  kitchen.attachLongPressStop(kitchenOff);
-  kitchen.attachDoubleClick(clickCallback, KITCHEN_LED1_ID);
-
-  kitchenTable.attachClick(clickCallback, KITCHEN_TABLE_ID);
-
-  workshop.attachClick(clickCallback, WORKSHOP_ID);
-
-  corridor.attachClick(clickCallback, CORRIDOR_ID);
-}
+  stasiu.attachClick(stasiuClick);
+  stasiu.attachLongPressStop(stasiuOff);
+  stasiu.attachDoubleClick(clickCallback, STASIU_OSWIETLENIE_L2);
+  }
